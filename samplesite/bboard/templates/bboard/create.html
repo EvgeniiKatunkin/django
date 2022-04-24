@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create a bulletin :: Bulletin board</title>
-</head>
-<body>
-    <h1>A bulletin creation</h1>
-    <div>
-        <a href="{% url 'index' %}">The main page</a>
-        <a href="{% url 'add' %}">Create</a>
-        {% for rubric in rubrics %}
-        <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-        {% endfor %}
-    </div>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Create">
-    </form>
-</body>
-</html>
+{% extends "layout/basic.html" %}
+
+{% block title %}Create a bulletin{% endblock %}
+
+{% block content %}
+<h1>A bulletin creation</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Create">
+</form>
+{% endblock %}
